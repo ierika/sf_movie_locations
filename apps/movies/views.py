@@ -52,6 +52,7 @@ class ActorView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
         kwargs['locations'] = self.objects
+        kwargs['actor'] = self.actor.title()
         if self.imdb:
             kwargs['imdb'] = self.imdb[0]
         return kwargs
