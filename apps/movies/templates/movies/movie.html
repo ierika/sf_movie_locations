@@ -9,9 +9,11 @@
 
         {% if imdb %}
             <div class="row mx-auto my-3">
-                <div class="col-md-3 text-center">
-                    <img src="{{ imdb.poster.thumb }}" class="img-fluid actor-thumbnail mb-3">
-                </div>
+                {% if imdb.poster.thumb %}
+                    <div class="col-md-3 text-center">
+                        <img src="{{ imdb.poster.thumb }}" class="img-fluid actor-thumbnail mb-3">
+                    </div>
+                {% endif %}
 
                 <div class="col-md-9">
                     <p>{{ imdb.storyline|truncatewords:100 }} <a href="{{ imdb.url.url }}" target="_blank">See more <i class="fas fa-chevron-right"></i></a></p>

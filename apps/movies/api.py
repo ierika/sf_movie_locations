@@ -18,8 +18,9 @@ class BaseApi:
         is_cached = (self.cache_name in request.session)
         if not is_cached:
             response = requests.get(self.api_endpoint)
-            self.request.session[self.cache_name] = response.json()
-            self.request.session.set_expiry(86400)  # Let it expire every hour
+            if response.status_code == 200:
+                self.request.session[self.cache_name] = response.json()
+                self.request.session.set_expiry(86400)  # Let it expire every hour
         self.objects = self.request.session.get(self.cache_name)
         return self
 
