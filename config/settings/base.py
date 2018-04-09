@@ -16,6 +16,7 @@ from django.core.exceptions import ImproperlyConfigured
 
 from unipath import Path
 from dotenv import load_dotenv
+import dj_database_url
 
 
 # Function for getting secret information
