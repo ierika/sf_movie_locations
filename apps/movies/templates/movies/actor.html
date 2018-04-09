@@ -21,23 +21,20 @@
                 </div>
             {% endif %}
 
-            <div class="row">
-                <div class="col-xs-12 mx-auto">
-                    <p>The actor had filmed in {% if locations|length > 1 %}these{% else %}this{% endif %} location{{ locations|pluralize:'s' }} in San Francisco:</p>
+            <p>The actor had filmed in {% if locations|length > 1 %}these{% else %}this{% endif %} location{{ locations|pluralize:'s' }} in San Francisco:</p>
 
-                    <table class="table" width="100%">
-                        <tbody>
-                            {% for location in locations %}
-                                <tr>
-                                    <td>{{ location.locations }}</td>
+            <table class="table" width="100%">
+                <tbody>
+                    {% for location in locations %}
+                        <tr>
+                            <td>{{ location.locations }}</td>
 
-                                    <td align="right"><a href="{% url 'movies:movie' %}?title={{ location.title|urlencode }}">{{ location.title }} ({{ location.release_year }})</a></td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                            <td align="right"><a href="{% url 'movies:movie' %}?title={{ location.title|urlencode }}">{{ location.title }} ({{ location.release_year }})</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+               
         </div>
     </div>
 {% else %}
