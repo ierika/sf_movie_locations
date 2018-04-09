@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- <div class="row my-3">
+    <div class="col-sm-6 mx-auto">
+        <form class="search-form">
+            <input type="text" name="" class="form-control search-form-input" placeholder="Search here" autofocus>
+        </form>
+    </div>
+</div> -->
+
+<div class="row">
+    <div class="col-sm-6 mx-auto">
+        <h2 class="text-center">Location Fun Fact!</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 mx-auto py-5 black-bg fun-fact">
+
+            <h3 class="text-center fun-fact-title"><a href="{% url 'movies:movie' %}?title={{ random_fact.title|urlencode }}">{{ random_fact.title }}</a></h3>
+
+            <h4 class="text-center fun-fact-location"><i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;{{random_fact.locations}}</h4>
+
+            <p class="text-center fun-fact-fact">{{ random_fact.fun_facts }}</p>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SF Movies</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+<div class="container-fluid">
+    <header class="mx-5">
+        <h1 class="mt-5 text-center branding"><a href="{% url 'movies:index' %}">Movie San Francisco</a></h1>
+        <p class="slogan text-center my-0">Your guide to SF movie locations</p>
+    </header>
+</div>
+
+<div class="container-fluid">
+{% block content %}{% endblock %}
+</div>
+<!-- inline scripts -->
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+<script src="{% static 'js/fontawesome-all.min.js' %}"></script>
+<!-- end of inline scripts -->
+</body>
+</html>

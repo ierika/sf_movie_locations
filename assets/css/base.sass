@@ -1,0 +1,98 @@
+$linkColor: gold
+$hoverColor: skyblue
+$headingColor: gold
+$fontColor: #cccccc
+
+
+// Typography
+
+@font-face
+    font-family: 'Archivo'
+    src: url('/static/fonts/ArchivoNarrow-Regular.ttf')
+
+
+@font-face
+    font-family: 'ArchivoBold'
+    src: url('/static/fonts/ArchivoNarrow-Bold.ttf')
+
+
+h1, h2, h3, h4, h5, h6
+    color: #ffffff
+    font-family: ArchivoBold, 'Helvetica Neue', sans-serif
+
+
+body
+    background: #031F36 url('/static/img/golden-gate-bridge.jpg') no-repeat top center
+    font-family: Archivo, 'Helvetica Neue', sans-serif
+    color: $fontColor
+    text-shadow: 1px 1px 1px #000000
+    font-size: 1.1rem
+    
+
+header
+    padding-bottom: 2.5rem
+
+.branding
+    margin-bottom: 0
+    & a
+        color: $headingColor
+
+.slogan
+    text-shadow: none
+    font-family: 'Helvetica Neue', arial, sans-serif
+    font-weight: lighter
+    font-size: 1.3rem
+    letter-spacing: 0.1rem
+    color: #fafafa
+    margin: 0
+
+a
+    color: $linkColor
+    &:hover
+        color: $hoverColor
+        text-decoration: none
+        border-bottom: 1px solid $linkColor
+
+
+// Index
+
+.black-bg
+    background: rgba(0,0,0,.5)
+    border-radius: 5px
+    padding: 1rem
+
+    &-title
+        color: $linkColor
+
+
+.title
+    border-bottom: 2px solid #cccccc
+    padding: 1rem    
+
+
+.fun-fact
+    border-top: 2px solid #ffffff
+    border-bottom: 2px solid #ffffff
+    border-radius: 0
+
+    &-section-title
+        margin: 0 auto 1rem
+        text-align: left
+        border-bottom: 2px solid #cccccc
+        padding-bottom: 0.3rem
+
+    // &-fact
+    //     border-bottom: 2px solid #cccccc
+    //     padding-bottom: 1rem
+
+
+.search-form
+    &-input
+        font-size: 2.3rem
+        padding-left: 1.5rem
+        padding-right: 1.5rem
+        margin: 5rem auto 7rem
+
+
+.actor-thumbnail
+    border: 1px solid #cccccc

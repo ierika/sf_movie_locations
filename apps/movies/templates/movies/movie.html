@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+<div class="row mt-5">
+    <div class="col-sm-8 mx-auto black-bg mb-5">
+        <h1 class="mt-4 mb-0 text-center">{{ request.GET.title }}</h1>
+        <p class="text-center mt-0">{{ movie.release_year }}</p>
+
+        {% if imdb %}
+            <div class="row mx-auto my-3">
+                <div class="col-md-3 text-center">
+                    <img src="{{ imdb.poster.thumb }}" class="img-fluid actor-thumbnail mb-3">
+                </div>
+
+                <div class="col-md-9">
+                    <p>{{ imdb.storyline|truncatewords:100 }} <a href="{{ imdb.url.url }}" target="_blank">See more <i class="fas fa-chevron-right"></i></a></p>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="row mx-auto">
+            <div class="col-md-6 mt-3">
+                <h2>Actors:</h2>
+
+                <ul>
+                    {% for actor in actors %}
+                        <li><a href="{% url 'movies:actor' %}?name={{ actor|urlencode }}">{{ actor }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="col-md-6 mt-3">
+                <h2>Filming locations:</h2>
+
+                <ul>
+                    {% for location in locations %}
+                        <li>{{ location }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

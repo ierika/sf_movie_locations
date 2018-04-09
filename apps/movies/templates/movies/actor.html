@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if locations %}
+    <div class="row mt-5">
+        <div class="col-sm-8 mx-auto black-bg mb-5">
+            <h1 class="my-4 text-center">{{ request.GET.name }}</h1>
+
+            {% if imdb %}
+                <div class="row mx-auto my-3">
+                    <div class="col-md-2 text-center">
+                        <img src="{{ imdb.image.thumb }}" class="img-fluid actor-thumbnail mb-3">
+                    </div>
+
+                    <div class="col-md-10">
+                        <p>{{ imdb.description }} <a href="http://www.imdb.com/name/{{ imdb.person_id }}/bio" target="_blank">See more <i class="fas fa-chevron-right"></i></a></p>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="row mx-auto">
+                <div class="col-xs-12">
+                    <p>The actor had filmed in {% if locations|length > 1 %}these{% else %}this{% endif %} location{{ locations|pluralize:'s' }} in San Francisco:</p>
+                </div>
+            </div>
+
+            <div class="row mx-auto">
+                <table class="table" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Location</th>
+
+                            <th>Movie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for location in locations %}
+                            <tr>
+                                <td>{{ location.locations }}</td>
+
+                                <td><a href="{% url 'movies:movie' %}?title={{ location.title|urlencode }}">{{ location.title }} ({{ location.release_year }})</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <p>The actor had no record of any specific filming location in SF.</p>
+{% endif %}
+{% endblock %}
