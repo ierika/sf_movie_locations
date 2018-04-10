@@ -20,7 +20,8 @@ class BaseApi:
             response = requests.get(self.api_endpoint)
             if response.status_code == 200:
                 self.request.session[self.cache_name] = response.json()
-                self.request.session.set_expiry(86400)  # Let it expire every hour
+                # Let it expire after one day
+                self.request.session.set_expiry(86400)
         self.objects = self.request.session.get(self.cache_name)
         return self
 
