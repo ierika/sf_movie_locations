@@ -31,6 +31,7 @@ secrets.json
 secrets.sh
 
 # Static
-django/static
-data/media/image_repository
-data/*
+/django/static
+/data/media/image_repository
+/data/*
+/static
