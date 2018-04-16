@@ -2,6 +2,7 @@ $linkColor: gold
 $hoverColor: skyblue
 $headingColor: gold
 $fontColor: #cccccc
+$white: #ffffff
 
 
 // Typography
@@ -17,7 +18,7 @@ $fontColor: #cccccc
 
 
 h1, h2, h3, h4, h5, h6
-    color: #ffffff
+    color: $white
     font-family: ArchivoBold, 'Helvetica Neue', sans-serif
 
 
@@ -30,10 +31,12 @@ body
     
 
 header
-    padding-bottom: 2.5rem
+    padding: 0
 
 .branding
     margin-bottom: 0
+    margin-top: 1.2rem
+    text-align: center
     & a
         color: $headingColor
 
@@ -45,6 +48,7 @@ header
     letter-spacing: 0.1rem
     color: #fafafa
     margin: 0
+    text-align: center
 
 a
     color: $linkColor
@@ -60,6 +64,7 @@ a
     background: rgba(0,0,0,.5)
     border-radius: 5px
     padding: 1rem
+    margin-bottom: 2rem
 
     &-title
         color: $linkColor
@@ -71,8 +76,8 @@ a
 
 
 .fun-fact
-    border-top: 2px solid #ffffff
-    border-bottom: 2px solid #ffffff
+    border-top: 2px solid $white
+    border-bottom: 2px solid $white
     border-radius: 0
 
     &-section-title
@@ -81,9 +86,9 @@ a
         border-bottom: 2px solid #cccccc
         padding-bottom: 0.3rem
 
-    // &-fact
-    //     border-bottom: 2px solid #cccccc
-    //     padding-bottom: 1rem
+    &-location
+        &:hover
+            text-decoration: underline
 
 
 .search-form
@@ -93,6 +98,25 @@ a
         padding-right: 1.5rem
         margin: 5rem auto 7rem
 
-
 .actor-thumbnail
     border: 1px solid #cccccc
+
+.modal
+    text-shadow: none
+
+    &-title
+        color: #555555
+
+.map-wrapper
+    height: 450px
+    border: 1px solid #cccccc
+
+#map
+    height: 100%
+    width: 100%
+    display: block
+    text-shadow: none
+    color: #555555
+
+.location-link
+    cursor: pointer

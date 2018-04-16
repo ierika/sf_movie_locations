@@ -16,10 +16,12 @@ body {
   font-size: 1.1rem; }
 
 header {
-  padding-bottom: 2.5rem; }
+  padding: 0; }
 
 .branding {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  margin-top: 1.2rem;
+  text-align: center; }
   .branding a {
     color: gold; }
 
@@ -30,7 +32,8 @@ header {
   font-size: 1.3rem;
   letter-spacing: 0.1rem;
   color: #fafafa;
-  margin: 0; }
+  margin: 0;
+  text-align: center; }
 
 a {
   color: gold; }
@@ -42,7 +45,8 @@ a {
 .black-bg {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 5px;
-  padding: 1rem; }
+  padding: 1rem;
+  margin-bottom: 2rem; }
   .black-bg-title {
     color: gold; }
 
@@ -68,5 +72,24 @@ a {
 
 .actor-thumbnail {
   border: 1px solid #cccccc; }
+
+.modal {
+  text-shadow: none; }
+  .modal-title {
+    color: #555555; }
+
+.map-wrapper {
+  height: 450px;
+  border: 1px solid #cccccc; }
+
+#map {
+  height: 100%;
+  width: 100%;
+  display: block;
+  text-shadow: none;
+  color: #555555; }
+
+.location-link {
+  cursor: pointer; }
 
 /*# sourceMappingURL=base.css.map */

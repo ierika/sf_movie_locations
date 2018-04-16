@@ -2,29 +2,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Movie San Francisco</title>
+    <title>{% block title %}{% endblock %}Movie San Francisco</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyAe07DAwn0F4ZuRevshX4logKb626-Z3t4" 
+            type="text/javascript"></script>
+    {% block head_script %}{% endblock %}
 </head>
+
 <body>
 <div class="container-fluid">
-    <header class="mx-5">
-        <h1 class="mt-5 text-center branding"><a href="{% url 'movies:index' %}">Movie San Francisco</a></h1>
-        <p class="slogan text-center my-0">Your guide to SF movie locations</p>
+    <header>
+        <h1 class="branding"><a href="{% url 'movies:index' %}">Movie San Francisco</a></h1>
+        <p class="slogan">Your guide to SF movie locations</p>
     </header>
 </div>
 
 <div class="container-fluid">
 {% block content %}{% endblock %}
 </div>
+
 <!-- inline scripts -->
 <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-
 <script src="{% static 'js/fontawesome-all.min.js' %}"></script>
+<script src="{% static 'js/google-map.js' %}"></script>
+<script src="{% static 'js/event-listeners.js' %}"></script>
+{% block inline_script %}{% endblock %}
 <!-- end of inline scripts -->
 </body>
+
 </html>

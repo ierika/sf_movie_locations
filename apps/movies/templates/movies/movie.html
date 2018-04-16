@@ -5,7 +5,7 @@
 <div class="row mt-5">
     <div class="col-sm-8 mx-auto black-bg mb-5">
         <h1 class="mt-4 mb-0 text-center">{{ request.GET.title }}</h1>
-        <p class="text-center mt-0">{{ movie.release_year }}</p>
+        <p class="text-center mt-0">Movie | {{ movie.release_year }}</p>
 
         {% if imdb %}
             <div class="row mx-auto my-3">
@@ -16,7 +16,7 @@
                 {% endif %}
 
                 <div class="col-md-9">
-                    <p>{{ imdb.storyline|truncatewords:100 }} <a href="{{ imdb.url.url }}" target="_blank">See more <i class="fas fa-chevron-right"></i></a></p>
+                    <p>{{ imdb.storyline|truncatewords:100 }} <a href="{{ imdb.url.url }}" target="_blank">See more at IMDB <i class="fas fa-chevron-right"></i></a></p>
                 </div>
             </div>
         {% endif %}
@@ -37,7 +37,11 @@
 
                 <ul>
                     {% for location in locations %}
-                        <li>{{ location }}</li>
+                        <li><a href="javascript:void(0)" 
+                               class="location-link"
+                               data-location="{{ location }}"
+                               data-target="#mapModal"
+                               data-toggle="modal">{{ location }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -45,4 +49,5 @@
     </div>
 </div>
 
+{% include 'includes/map_modal.html' %}
 {% endblock %}

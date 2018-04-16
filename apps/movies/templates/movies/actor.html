@@ -4,8 +4,9 @@
 
 {% if locations %}
     <div class="row mt-5">
-        <div class="col-sm-8 mx-auto black-bg mb-5">
-            <h1 class="my-4 text-center">{{ actor }}</h1>
+        <div class="col-sm-8 mx-auto black-bg">
+            <h1 class="mt-4 mb-0 text-center">{{ actor }}</h1>
+            <p class="text-center mt-0">Actor</p>
 
             {% if imdb %}
                 <div class="row mx-auto my-3">
@@ -16,7 +17,7 @@
                     {% endif %}
 
                     <div class="col-md-9">
-                        <p>{{ imdb.description }} <a href="http://www.imdb.com/name/{{ imdb.person_id }}/bio" target="_blank">See more <i class="fas fa-chevron-right"></i></a></p>
+                        <p>{{ imdb.description }} <a href="http://www.imdb.com/name/{{ imdb.person_id }}/bio" target="_blank">See more at IMDB <i class="fas fa-chevron-right"></i></a></p>
                     </div>
                 </div>
             {% endif %}
@@ -27,7 +28,13 @@
                 <tbody>
                     {% for location in locations %}
                         <tr>
-                            <td>{{ location.locations }}</td>
+                            <td>
+                                <a href="javascript:void(0)" 
+                                   class="location-link"
+                                   data-location="{{ location.locations }}"
+                                   data-target="#mapModal"
+                                   data-toggle="modal">{{ location.locations }}</a>
+                            </td>
 
                             <td align="right"><a href="{% url 'movies:movie' %}?title={{ location.title|urlencode }}">{{ location.title }} ({{ location.release_year }})</a></td>
                         </tr>
@@ -40,4 +47,6 @@
 {% else %}
     <p>The actor had no record of any specific filming location in SF.</p>
 {% endif %}
+
+{% include 'includes/map_modal.html' %}
 {% endblock %}
