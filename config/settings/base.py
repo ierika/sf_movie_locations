@@ -153,3 +153,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR.child('assets')]
 STATIC_ROOT = BASE_DIR.child('static')
+
+# API Keys
+OMDB_API_KEY = get_env('OMDB_API_KEY')

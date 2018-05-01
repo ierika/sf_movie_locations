@@ -5,11 +5,11 @@
   font-family: "ArchivoBold";
   src: url("/static/fonts/ArchivoNarrow-Bold.ttf"); }
 h1, h2, h3, h4, h5, h6 {
-  color: #ffffff;
+  color: #7ec3c7;
   font-family: ArchivoBold, "Helvetica Neue", sans-serif; }
 
 body {
-  background: #031F36 url("/static/img/golden-gate-bridge.jpg") no-repeat top center;
+  background: #507390;
   font-family: Archivo, "Helvetica Neue", sans-serif;
   color: #cccccc;
   text-shadow: 1px 1px 1px #000000;
@@ -23,7 +23,7 @@ header {
   margin-top: 1.2rem;
   text-align: center; }
   .branding a {
-    color: gold; }
+    color: #ffe86a; }
 
 .slogan {
   text-shadow: none;
@@ -36,19 +36,19 @@ header {
   text-align: center; }
 
 a {
-  color: gold; }
+  color: #ffe86a; }
   a:hover {
-    color: skyblue;
+    color: #fafafa;
     text-decoration: none;
-    border-bottom: 1px solid gold; }
+    border-bottom: 1px solid #ffe86a; }
 
 .black-bg {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   padding: 1rem;
   margin-bottom: 2rem; }
   .black-bg-title {
-    color: gold; }
+    color: #ffe86a; }
 
 .title {
   border-bottom: 2px solid #cccccc;
@@ -63,6 +63,8 @@ a {
     text-align: left;
     border-bottom: 2px solid #cccccc;
     padding-bottom: 0.3rem; }
+  .fun-fact-location:hover {
+    text-decoration: underline; }
 
 .search-form-input {
   font-size: 2.3rem;
@@ -91,5 +93,23 @@ a {
 
 .location-link {
   cursor: pointer; }
+
+.sub-title {
+  color: #7ec3c7;
+  font-weight: bold; }
+
+.imdb-rating {
+  background-color: gold;
+  padding: 0.2em 0.5em;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1em;
+  border-radius: 0.3em; }
+  .imdb-rating.imdb-rating-medium {
+    background-color: gold; }
+  .imdb-rating.imdb-rating-low {
+    background-color: crimson; }
+  .imdb-rating.imdb-rating-high {
+    background-color: green; }
 
 /*# sourceMappingURL=base.css.map */

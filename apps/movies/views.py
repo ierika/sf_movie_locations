@@ -1,6 +1,5 @@
 from django.views import generic
-from django.http import Http404
-from django.http import HttpResponse
+from django import http
 
 from .api import MovieApi
 from .api import ImdbActorApi
@@ -40,13 +39,13 @@ class ActorView(generic.TemplateView):
             api.filter(actor=self.actor)
             self.objects = api.get_objects()
             if not self.objects:
-                raise Http404('Data not available for this actor')
+                raise http.Http404('Data not available for this actor')
             # Get profile picure of actor from IMDB API
             imdb_api = ImdbActorApi(self.actor)
             imdb_api = imdb_api.fetch(request)
             self.imdb = imdb_api.get_objects() or None
         else:
-            return HttpResponse('Bad request', status=400)
+            return http.HttpResponse('Bad request', status=400)
         return super().get(api.request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -77,9 +76,9 @@ class MovieView(generic.TemplateView):
                 self.imdb = self.imdb.fetch(request)
                 self.imdb = self.imdb.get_objects() or None
             else:
-                raise Http404('Data not available for this title')
+                raise http.Http404('Data not available for this title')
         else:
-            return HttpResponse('Bad request', status=400)
+            return http.HttpResponse('Bad request', status=400)
         return super().get(api.request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -107,5 +106,14 @@ class MovieView(generic.TemplateView):
                         actors.add(obj.get(key))
         kwargs['actors'] = sorted(list(actors))
         if self.imdb:
-            kwargs['imdb'] = self.imdb[0]
+            kwargs['imdb'] = self.imdb
         return kwargs
+
+
+def api_get_locations(request):
+    '''Returns a locations list in JSON format'''
+    if not request.is_ajax():
+        raise http.HttpResponse("Forbidden. This view is an AJAX view", 403)
+    api = MovieApi().fetch(request)
+    locations = api.get_location_list()
+    return http.JsonResponse({ 'locations': locations })

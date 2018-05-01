@@ -2,6 +2,8 @@ import requests
 from urllib.parse import urlencode
 from random import randint
 
+from django.conf import settings
+
 
 class BaseApi:
     '''Defines the base API
@@ -174,10 +176,13 @@ class ImdbMovieApi(BaseApi):
     cache_name = None
     objects = None
     request = None
-    query_params = {}
+    query_params = {
+        'apikey': settings.OMDB_API_KEY,
+        'plot': 'full',
+    }
 
     def __init__(self, movie_title=None):
-        self.query_params['title'] = movie_title.lower()
+        self.query_params['t'] = movie_title.lower()
 
     def fetch(self, request):
         uri = self.get_uri()
@@ -187,11 +192,11 @@ class ImdbMovieApi(BaseApi):
         return super().fetch(request)
 
     def get_uri(self):
-        return 'http://www.theimdbapi.org/api/find/movie?{}'.format(
+        return 'http://www.omdbapi.com/?{}'.format(
             urlencode(self.query_params),
         )
 
     def filter(self, year=None):
         if year:
-            self.query_params['year'] = year
+            self.query_params['y'] = year
         return self

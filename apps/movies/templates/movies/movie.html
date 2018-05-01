@@ -1,22 +1,36 @@
 {% extends 'base.html' %}
+{% load movies %}
 
 {% block content %}
     
 <div class="row mt-5">
     <div class="col-sm-8 mx-auto black-bg mb-5">
-        <h1 class="mt-4 mb-0 text-center">{{ request.GET.title }}</h1>
+        <h1 class="mt-4 mb-0 text-center">{{ movie.title }}</h1>
         <p class="text-center mt-0">Movie | {{ movie.release_year }}</p>
 
-        {% if imdb %}
+        {% if imdb.Response != 'False' %}
             <div class="row mx-auto my-3">
-                {% if imdb.poster.thumb %}
-                    <div class="col-md-3 text-center">
-                        <img src="{{ imdb.poster.thumb }}" class="img-fluid actor-thumbnail mb-3">
-                    </div>
+                <div class="col-md-3 text-center">
+                    {% if imdb.Poster != 'N/A' %}
+                        <img src="{{ imdb.Poster }}" class="img-fluid actor-thumbnail mb-3">
+                    {% endif %}
+                </div>
+
+                {% if imdb.Poster == 'N/A' %}
+                    <div class="col-xs-12">
+                {% else %}
+                    <div class="col-md-9">
                 {% endif %}
 
-                <div class="col-md-9">
-                    <p>{{ imdb.storyline|truncatewords:100 }} <a href="{{ imdb.url.url }}" target="_blank">See more at IMDB <i class="fas fa-chevron-right"></i></a></p>
+                    <p>{{ imdb.Plot|truncatewords:120 }} <a href="https://www.imdb.com/title/{{ imdb.imdbID }}/" target="_blank">See more at IMDB <i class="fas fa-chevron-right"></i></a></p>
+
+                    {% if imdb.imdbRating != 'N/A' %}
+                        <p>Rating: <span class="imdb-rating {{ imdb.imdbRating|imdb_rating_color }}">{{ imdb.imdbRating }}</span></p>
+                    {% endif %}
+
+                    {% if imdb.Actors %}
+                        <!-- <p><span class="sub-title">Actors</span><br />{{ imdb.Actors }}</p> -->
+                    {% endif %}
                 </div>
             </div>
         {% endif %}
@@ -27,7 +41,7 @@
 
                 <ul>
                     {% for actor in actors %}
-                        <li><a href="{% url 'movies:actor' %}?name={{ actor|urlencode }}">{{ actor }}</a></li>
+                        <li>{{ actor }}</li>
                     {% endfor %}
                 </ul>
             </div>

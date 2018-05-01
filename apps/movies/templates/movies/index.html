@@ -11,17 +11,28 @@
     </div>
 </div> -->
 
+<!-- <div class="row">
+    <div class="col-xs-12">
+        <div id="map" style="width: 500px; height: 500px"></div>
+    </div>
+</div> -->
+
 <div class="row">
     <div class="col-sm-6 mx-auto my-5 py-4 black-bg">
             <!-- <h2 class="text-center">Location Fun Fact!</h2> -->
 
             <h3 class="text-center fun-fact-title"><a href="{% url 'movies:movie' %}?title={{ random_fact.title|urlencode }}">{{ random_fact.title }}</a></h3>
 
-            <h4 class="text-center fun-fact-location location-link" data-location="{{ random_fact.locations }}" data-toggle="modal" data-target="#mapModal"><i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;{{ random_fact.locations }}</h4>           
+            <p class="text-center lead"><a class="text-center fun-fact-location location-link" data-location="{{ random_fact.locations }}" data-toggle="modal" data-target="#mapModal"><i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;{{ random_fact.locations }}</a></p>
 
             <p class="text-center fun-fact-fact">{{ random_fact.fun_facts }}</p>
     </div>
 </div>
 
 {% include 'includes/map_modal.html' %}
+
+{% endblock %}
+
+{% block inline_script %}
+<script type="text/javascript" src="{% static 'js/views/movies_index.js' %}"></script>
 {% endblock %}
